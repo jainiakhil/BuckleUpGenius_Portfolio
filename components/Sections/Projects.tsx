@@ -127,26 +127,44 @@ const PanelOverlay: React.FC<{ panel: ComicPanelData; onClose: () => void; color
   );
 };
 
-const ComicPanel: React.FC<{ panel: ComicPanelData; issueColor: any; onClick: () => void }> = ({ panel, issueColor, onClick }) => {
+const ComicPanel: React.FC<{ panel: ComicPanelData; issueColor: any; onClick: () => void; index: number }> = ({ panel, issueColor, onClick, index }) => {
   const isTextBased = panel.panelType === 'Writing' || panel.panelType === 'Copyediting';
+
+  // Seeded random-ish rotation based on index (-2deg or 2deg)
+  const rotateValue = index % 2 === 0 ? -2 : 2;
+
+  // Variants for layout stability + tilt effect
+  const panelVariants = {
+    initial: { opacity: 0, y: 20, rotate: rotateValue * 2 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      rotate: rotateValue,
+      transition: { type: "spring", stiffness: 100, damping: 20 }
+    },
+    hover: {
+      scale: 1.05,
+      rotate: 0, // Straighten on hover
+      zIndex: 20,
+      transition: { duration: 0.3 }
+    }
+  };
 
   return (
     <motion.div
       layoutId={`panel-${panel.id}`}
       onClick={onClick}
-      initial={{ x: 40, opacity: 0 }}
-      whileInView={{ x: 0, opacity: 1 }}
-      viewport={{ once: false, amount: 0.2 }}
-      transition={{ type: "spring", stiffness: 100, damping: 20 }}
-      whileHover={{ scale: 1.02, rotate: 1, zIndex: 10 }}
-      whileTap={{ scale: 0.98 }}
-      className="relative group cursor-pointer overflow-hidden bg-neutral-900 border-4 border-black transition-all duration-300 shadow-md h-full w-full"
+      initial="initial"
+      whileInView="visible"
+      whileHover="hover"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={panelVariants}
+      className="relative group cursor-pointer bg-neutral-900 border-4 border-black transition-shadow duration-300 shadow-md h-full w-full"
       style={{
         boxShadow: `8px 8px 0px 0px ${issueColor.primary}`
       }}
     >
-      {/* Content */}
-      <div className="relative w-full h-full aspect-[4/5] md:aspect-square">
+      <div className="relative w-full h-full aspect-[4/5] md:aspect-square overflow-hidden">
         {isTextBased ? (
           <div className="w-full h-full p-6 bg-[#fdfbf7] flex flex-col justify-center items-center text-center relative overflow-hidden">
             <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '10px 10px' }}></div>
@@ -236,7 +254,7 @@ const ComicIssueSection: React.FC<{ issue: ComicIssue; onPanelClick: (p: ComicPa
       <IssueCover issue={issue} />
 
       {/* Panels Grid */}
-      <div className="p-4 md:p-12 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 content-center flex-grow max-w-4xl relative">
+      <div className="p-4 md:p-8 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 content-center flex-grow max-w-[600px] relative max-h-full overflow-y-auto overflow-x-hidden hide-scrollbar">
         {/* Decorative Background Text */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-5 whitespace-nowrap pointer-events-none">
           <span className="text-[200px] font-black uppercase text-white" style={{ WebkitTextStroke: `2px ${issue.color.primary}`, color: 'transparent' }}>
@@ -244,8 +262,8 @@ const ComicIssueSection: React.FC<{ issue: ComicIssue; onPanelClick: (p: ComicPa
           </span>
         </div>
 
-        {issue.panels.map((panel) => (
-          <ComicPanel key={panel.id} panel={panel} issueColor={issue.color} onClick={() => onPanelClick(panel)} />
+        {issue.panels.map((panel, idx) => (
+          <ComicPanel key={panel.id} panel={panel} issueColor={issue.color} onClick={() => onPanelClick(panel)} index={idx} />
         ))}
       </div>
     </section>
@@ -385,9 +403,9 @@ const Projects: React.FC = () => {
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-                {COMIC_ISSUES.flatMap(issue => issue.panels).map((panel) => (
+                {issue.panels.map((panel, idx) => (
                   <div key={panel.id} onClick={handlePanelClick} className="aspect-[4/5]">
-                    <ComicPanel panel={panel} issueColor={COMIC_ISSUES.find(i => i.id === panel.issueId)?.color || COMIC_ISSUES[0].color} onClick={handlePanelClick} />
+                    <ComicPanel panel={panel} issueColor={issue.color} onClick={handlePanelClick} index={idx} />
                   </div>
                 ))}
               </div>
@@ -399,9 +417,9 @@ const Projects: React.FC = () => {
       {/* Footer Prompt */}
       {viewMode === 'flip' && (
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 opacity-50 z-30 hidden md:block pointer-events-none">
-          <p className="font-mono text-xs text-neutral-600">
+          {/* <p className="font-mono text-xs text-neutral-600">
             *Use arrows or Scroll/Swipe to navigate
-          </p>
+          </p> */}
         </div>
       )}
 

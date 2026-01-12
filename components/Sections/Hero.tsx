@@ -16,6 +16,7 @@ const ROLES = [
 
 const Hero: React.FC = () => {
   const [roleIndex, setRoleIndex] = useState(0);
+  const [isButtonLoaded, setIsButtonLoaded] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -126,7 +127,8 @@ const Hero: React.FC = () => {
               href="#contact"
               initial={{ scale: 0, rotate: 10 }}
               animate={{ scale: 1, rotate: -3 }}
-              transition={{ delay: 3.5, type: "spring", stiffness: 200 }}
+              transition={{ delay: isButtonLoaded ? 0 : 3.5, type: "spring", stiffness: 200 }}
+              onAnimationComplete={() => setIsButtonLoaded(true)}
               whileHover={{ scale: 1.1, rotate: 3, boxShadow: "8px 8px 0px #050505" }}
               whileTap={{ scale: 0.95, boxShadow: "2px 2px 0px #050505", translateY: 4, translateX: 4 }}
               className="bg-comic-yellow text-ink-black border-4 border-black px-6 py-3 md:px-8 md:py-4 font-sans font-black text-lg md:text-xl uppercase tracking-widest shadow-[6px_6px_0px_#050505] flex items-center gap-3 whitespace-nowrap"
