@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/assets/logoFinal.png" alt="BuckleUpGenius Logo" width="200" height="auto" />
+  <img src="assets/logoFinal.png" alt="BuckleUpGenius Logo" width="800" height="auto" style="filter: invert(100%);" />
   <h1>BuckleUpGenius Portfolio</h1>
   <p><strong>A High-Octane, Comic-Book Styled Digital Experience</strong></p>
 </div>
