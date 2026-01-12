@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-red: #FF0000;
+  --color-brand-violet: #8A2BE2;
+  --color-brand-green: #00FF00;
+}
+
+/* Custom Utilities */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.font-comic {
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif;
+}
+
+/* You can still add your global styles here */
+/* You can still add your global styles here */
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: black;
+  color: white;
+  margin: 0;
+  overflow-x: hidden;
+}
