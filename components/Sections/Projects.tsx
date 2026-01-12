@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Grid, Layers, ArrowDown } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Grid, Layers, ArrowDown, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import SectionWrapper from '../UI/SectionWrapper';
 import { COMIC_ISSUES, ComicIssue, ComicPanelData } from './comicData';
