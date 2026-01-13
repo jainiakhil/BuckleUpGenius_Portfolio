@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useMotionValue } from 'framer-motion';
 import Lottie from 'lottie-react';
-import blobAnimation from '../../assets/Blob.json';
+import blobAnimation from '../../src/data/Blob.json';
 
 interface InkDrop {
   id: number;

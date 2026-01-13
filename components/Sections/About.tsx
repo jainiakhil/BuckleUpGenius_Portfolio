@@ -189,7 +189,7 @@ const About: React.FC = () => {
                     }}
                   >
                     <img
-                      src="assets/ComicFinal1.png"
+                      src="/assets/ComicFinal1.png"
                       alt="Comic Portrait"
                       className="w-full h-full object-cover object-center"
                     />

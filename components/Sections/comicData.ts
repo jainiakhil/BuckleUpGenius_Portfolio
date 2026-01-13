@@ -29,7 +29,7 @@ export interface ComicIssue {
  *  1. To Add a New Issue: Copy an entire object in the COMIC_ISSUES array (from { to }).
  *  2. To Add a Project: Add a new object to the 'panels' array within an Issue.
  *  3. Panel Types: 'Photography' | 'Graphic Design' | 'Writing' | 'Copyediting' | 'Subtitle' | 'Web Design'
- *  4. Images: Use local paths (e.g., 'assets/projects/img1.jpg') or external URLs.
+ *  4. Images: Use local paths (e.g., '/assets/projects/img1.jpg') or external URLs.
  */
 
 export const COMIC_ISSUES: ComicIssue[] = [

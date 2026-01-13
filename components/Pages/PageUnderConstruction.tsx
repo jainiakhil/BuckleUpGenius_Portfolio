@@ -13,7 +13,7 @@ const PageUnderConstruction: React.FC = () => {
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover hidden md:block opacity-60"
             >
-                <source src="assets/PageUnderConstruction_Landscape.mp4" type="video/mp4" />
+                <source src="/assets/PageUnderConstruction_Landscape.mp4" type="video/mp4" />
             </video>
 
             {/* Background Video - Mobile */}
@@ -24,13 +24,13 @@ const PageUnderConstruction: React.FC = () => {
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover md:hidden opacity-60"
             >
-                <source src="assets/PageUnderConstruction_Portrait.mp4" type="video/mp4" />
+                <source src="/assets/PageUnderConstruction_Portrait.mp4" type="video/mp4" />
             </video>
 
             {/* Logo - Top Left */}
             <div className="absolute top-6 left-6 md:top-8 md:left-8 z-30">
                 <img
-                    src="assets/logoFinal.png"
+                    src="/assets/logoFinal.png"
                     alt="BuckleUpGenius"
                     className="h-12 md:h-16 w-auto object-contain brightness-0 invert"
                 />

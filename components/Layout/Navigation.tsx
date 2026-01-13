@@ -59,7 +59,7 @@ const Navigation: React.FC = () => {
             onMouseEnter={() => setIsMenuOpen(true)}
           >
             <img
-              src="assets/logoFinal.png"
+              src="/assets/logoFinal.png"
               alt="BuckleUpGenius"
               className={`h-12 md:h-16 w-auto object-contain transition-all duration-500 group-hover:scale-110 ${!noBlend ? 'invert' : ''}`}
               onError={(e) => {

@@ -15,14 +15,14 @@ const PageNotFound: React.FC = () => {
                     playsInline
                     className="w-full h-full object-cover opacity-90"
                 >
-                    <source src="assets/PageNotFound_Square.mp4" type="video/mp4" />
+                    <source src="/assets/PageNotFound_Square.mp4" type="video/mp4" />
                 </video>
             </div>
 
             {/* Logo - Top Left */}
             <div className="absolute top-6 left-6 md:top-8 md:left-8 z-30">
                 <img
-                    src="assets/logoFinal.png"
+                    src="/assets/logoFinal.png"
                     alt="BuckleUpGenius"
                     className="h-12 md:h-16 w-auto object-contain brightness-0 invert"
                 />

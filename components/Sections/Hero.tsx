@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Lottie from 'lottie-react';
-import { brandAnimation } from '../../assets/brandAnimation';
+import { brandAnimation } from '../../src/data/brandAnimation';
 
 const ROLES = [
   "Creative Writer",
