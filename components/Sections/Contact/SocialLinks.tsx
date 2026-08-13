@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 
 const SocialLinks: React.FC = () => {
     const socialLinks = [
-        { icon: Github, href: "https://github.com", label: "GitHub", hoverColor: "group-hover:bg-[#333]" },
-        { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn", hoverColor: "group-hover:bg-[#0077b5]" },
+        { icon: Github, href: "https://github.com/jainiakhil", label: "GitHub", hoverColor: "group-hover:bg-[#333]" },
+        { icon: Linkedin, href: "https://linkedin.com/in/jainiakhil", label: "LinkedIn", hoverColor: "group-hover:bg-[#0077b5]" },
         // Using Instagram
-        { icon: Instagram, href: "https://instagram.com", label: "Instagram", hoverColor: "group-hover:bg-[#E1306C]" },
+        { icon: Instagram, href: "https://instagram.com/jainiakhil", label: "Instagram", hoverColor: "group-hover:bg-[#E1306C]" },
     ];
 
     return (

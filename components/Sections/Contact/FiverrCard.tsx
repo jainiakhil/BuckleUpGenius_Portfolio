@@ -33,7 +33,7 @@ const FiverrCard: React.FC = () => {
                     </div>
 
                     <div className="bg-black text-white p-3 font-bold text-sm transform skew-x-[-2deg]">
-                        <p>Escrow • Milestones • Verified</p>
+                        <p>Creative • Passionate • Reliable</p>
                     </div>
 
                     <div className="flex items-center gap-2 mt-2 bg-white w-fit px-3 py-1 border-2 border-black rounded-full shadow-[2px_2px_0px_#000]">

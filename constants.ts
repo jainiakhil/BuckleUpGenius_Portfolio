@@ -121,5 +121,5 @@ export const SOCIALS: SocialLink[] = [
   { platform: 'Instagram', url: '#', icon: Instagram },
   { platform: 'LinkedIn', url: '#', icon: Linkedin },
   { platform: 'Twitter', url: '#', icon: Twitter },
-  { platform: 'Email', url: 'mailto:hello@creative.com', icon: Mail },
+  { platform: 'Email', url: 'mailto:pro.jainiakhil@gmail.com', icon: Mail },
 ];
