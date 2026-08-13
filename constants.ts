@@ -47,38 +47,73 @@ export const PROJECTS: Project[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: '1',
-    name: 'Elena Vance',
-    role: 'Art Director, Vogue',
-    text: 'A rare talent who understands the delicate balance between digital precision and analog soul.',
-    emphasis: ['rare talent', 'analog soul']
+    name: 'Aashish Richhariya',
+    role: 'Software Engineer, Meta',
+    text: 'It was a pleasure working with buckleupgenius. He did an excellent job copyediting my statement.',
+    emphasis: ['pleasure', 'excellent job']
   },
   {
     id: '2',
-    name: 'Marcus Thorne',
-    role: 'Filmmaker',
-    text: 'The editing pace was impeccable. Every cut told a story. Truly cinematic work.',
-    emphasis: ['impeccable', 'cinematic']
+    name: 'Shashank Shekhar',
+    role: 'Research Engineer, Google DeepMind',
+    text: 'Working with buckleupgenius for my website was great. He came up with very specific solutions!',
+    emphasis: ['was great', 'very specific solutions']
   },
   {
     id: '3',
-    name: 'Sarah Jenkins',
-    role: 'CEO, BrightStart',
-    text: 'Transformed our brand voice completely. The copy is sharp, witty, and deeply human.',
-    emphasis: ['transformed', 'deeply human']
+    name: 'Aleena Baby',
+    role: 'ML Engineer, Access e.v',
+    text: 'This guy is really genius. He did a fantastic job in creating our logo.',
+    emphasis: ['really genius', 'fantastic job']
   },
   {
     id: '4',
-    name: 'David Chen',
-    role: 'Product Lead, TechFlow',
-    text: 'Working with him was like checking into a luxury hotel. Everything was handled before I could even ask.',
-    emphasis: ['luxury hotel', 'handled']
+    name: 'Dylan Menter',
+    role: 'Influencer',
+    text: 'I am blown away by the quality and creativity of Akhil\'s work. Definitely recommended.',
+    emphasis: ['blown away', 'quality and creativity']
   },
   {
     id: '5',
-    name: 'Jessica Lee',
-    role: 'Founder, Core',
-    text: 'I was blown away by the creative direction. It wasn\'t just a website; it was a full experience.',
-    emphasis: ['blown away', 'full experience']
+    name: 'Geet Behera',
+    role: 'Civil Servant',
+    text: 'He perfectly grasped my initial idea and even used his creativity to my advantage.',
+    emphasis: ['perfectly grasped', 'creativity to my advantage']
+  },
+  {
+    id: '6',
+    name: 'valulife',
+    role: 'Fiverr Customer',
+    text: 'Beyond PHENOMENAL! Buckleupgenius is the absolute best at graphic design. Consummate professional.',
+    emphasis: ['Beyond PHENOMENAL', 'consummate professional']
+  },
+  {
+    id: '7',
+    name: 'clarinome',
+    role: 'Fiverr Customer',
+    text: 'It was such a pleasure to work with Akhil. The speed and quality were impressive.',
+    emphasis: ['pleasure', 'speed and quality']
+  },
+  {
+    id: '8',
+    name: 'Iain Wise',
+    role: 'Businessman',
+    text: 'I couldn\'t be more impressed. A truly impressive operator. Look forward to working again soon.',
+    emphasis: ['couldn\'t be more impressed', 'impressive operator']
+  },
+  {
+    id: '9',
+    name: 'robertsdgr',
+    role: 'Fiverr Customer',
+    text: 'Akhil is extremely knowledgeable and did an amazing job. HIGHLY RECOMMEND!',
+    emphasis: ['extremely knowledgeable', 'HIGHLY RECOMMEND']
+  },
+  {
+    id: '10',
+    name: 'Vijayshree',
+    role: 'Git Infosys',
+    text: 'Amazing delivery. He delivered exactly what I was looking for. Hats off to the speed!',
+    emphasis: ['Amazing delivery', 'Hats off']
   },
 ];
 
