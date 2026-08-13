@@ -12,10 +12,30 @@ const ContactForm: React.FC = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSent, setIsSent] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!formData.name || !formData.email || !formData.message) return;
+        
         setIsSubmitting(true);
+
+        try {
+            await fetch('https://formsubmit.co/ajax/pro.jainiakhil@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    mission: formData.projectType,
+                    message: formData.message,
+                    _subject: `New Mission Request from ${formData.name} (BuckleUpGenius Portfolio)`
+                })
+            });
+        } catch (err) {
+            console.error('Form submission error:', err);
+        }
     };
 
     const handleAnimationComplete = () => {

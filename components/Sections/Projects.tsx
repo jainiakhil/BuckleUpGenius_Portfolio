@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Grid, Layers, ArrowDown, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Grid, Layers, ArrowDown, X, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import SectionWrapper from '../UI/SectionWrapper';
 import { COMIC_ISSUES, ComicIssue, ComicPanelData } from './comicData';
@@ -59,67 +59,149 @@ const ViewModeToggle: React.FC<{
 // --- Panel Components ---
 
 const PanelOverlay: React.FC<{ panel: ComicPanelData; onClose: () => void; color: string }> = ({ panel, onClose, color }) => {
+  const images = panel.images && panel.images.length > 0 ? panel.images : [panel.image];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [images.length]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
-      style={{ perspective: '1000px' }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6"
     >
-      <div className="absolute inset-0 bg-black/90 backdrop-blur-sm" onClick={onClose} />
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/85 backdrop-blur-md" onClick={onClose} />
 
       <motion.div
-        initial={{ scale: 0.8, rotateY: 90, opacity: 0 }}
-        animate={{ scale: 1, rotateY: 0, opacity: 1 }}
-        exit={{ scale: 0.8, rotateY: -90, opacity: 0 }}
-        transition={{ type: "spring", damping: 20, stiffness: 100 }}
-        className="relative w-full max-w-5xl bg-neutral-50 shadow-2xl rounded-sm overflow-hidden flex flex-col md:flex-row max-h-[90vh]"
-        style={{ border: `4px solid ${color}` }}
+        initial={{ scale: 0.9, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.9, opacity: 0, y: 20 }}
+        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+        className="relative w-full max-w-4xl bg-[#fdfbf7] shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] rounded-none overflow-hidden flex flex-col max-h-[90vh] z-10 border-4 border-black"
       >
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 z-10 bg-black text-white p-2 rounded-full hover:bg-neutral-800 transition-colors"
-        >
-          <X size={20} />
-        </button>
+        {/* Top Header bar with Close Button */}
+        <div className="flex items-center justify-between px-6 py-4 bg-black text-white border-b-4 border-black shrink-0">
+          <div className="flex items-center gap-3">
+            <span
+              className="px-3 py-1 text-xs font-mono font-black uppercase tracking-wider text-black rounded-none"
+              style={{ backgroundColor: color }}
+            >
+              {panel.category}
+            </span>
+            <span className="font-mono text-xs text-neutral-400 font-bold">{panel.year}</span>
+          </div>
 
-        {/* Left: Visual */}
-        <div className="w-full md:w-1/2 h-64 md:h-auto relative overflow-hidden bg-neutral-900 group">
-          <img src={panel.image} alt={panel.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-          {/* Comic texture overlay */}
-          <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '4px 4px' }}></div>
+          <button
+            onClick={onClose}
+            className="p-1.5 bg-neutral-800 text-white rounded-none hover:bg-accent-red hover:text-white transition-colors border-2 border-white/20"
+            title="Close"
+          >
+            <X size={20} />
+          </button>
         </div>
 
-        {/* Right: Content */}
-        <div className="w-full md:w-1/2 p-8 md:p-12 overflow-y-auto bg-[#fdfbf7] relative">
-          <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
-            {/* Halftone pattern or similar decorative element could go here */}
+        {/* Modal Scrollable Container */}
+        <div className="overflow-y-auto flex-1 p-4 md:p-6 space-y-6">
+          {/* Main Focus: Image Carousel */}
+          <div className="relative w-full h-[320px] sm:h-[400px] md:h-[450px] bg-neutral-900 border-4 border-black overflow-hidden group select-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={currentIndex}
+                src={images[currentIndex]}
+                alt={`${panel.title} - image ${currentIndex + 1}`}
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -40 }}
+                transition={{ duration: 0.25 }}
+                className="w-full h-full object-contain bg-black"
+              />
+            </AnimatePresence>
+
+            {/* Navigation arrows if > 1 image */}
+            {images.length > 1 && (
+              <>
+                <button
+                  onClick={prevImage}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/80 text-white p-3 border-2 border-white/80 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-[#FACC15] hover:text-black hover:border-black transition-all"
+                  aria-label="Previous Image"
+                >
+                  <ChevronLeft size={24} />
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/80 text-white p-3 border-2 border-white/80 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:bg-[#FACC15] hover:text-black hover:border-black transition-all"
+                  aria-label="Next Image"
+                >
+                  <ChevronRight size={24} />
+                </button>
+
+                {/* Counter Badge */}
+                <div className="absolute top-4 left-4 bg-black/90 text-white px-3 py-1 font-mono text-xs font-bold border-2 border-white/40">
+                  {currentIndex + 1} / {images.length}
+                </div>
+
+                {/* Dots indicator */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/70 px-3 py-1.5 rounded-full border border-white/20">
+                  {images.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setCurrentIndex(idx);
+                      }}
+                      className={`h-2.5 rounded-full transition-all ${
+                        idx === currentIndex ? 'w-6 bg-[#FACC15]' : 'w-2.5 bg-white/50 hover:bg-white'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
 
-          <span className="font-mono text-xs tracking-widest uppercase mb-4 block font-bold" style={{ color: color }}>
-            {panel.category} — {panel.year}
-          </span>
+          {/* Description & Metadata Section */}
+          <div className="space-y-4 pt-2">
+            <h2 className="font-serif text-3xl md:text-4xl text-black font-black uppercase tracking-tight leading-tight">
+              {panel.title}
+            </h2>
 
-          <h2 className="font-serif text-4xl md:text-5xl text-black mb-6 leading-tight uppercase font-black tracking-tight" style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.1)' }}>
-            {panel.title}
-          </h2>
+            <div className="prose prose-neutral max-w-none text-neutral-800 font-serif text-base md:text-lg leading-relaxed">
+              <p>{panel.description}</p>
+            </div>
 
-          <div className="prose prose-lg text-neutral-800 mb-8 font-serif leading-relaxed">
-            <p className="first-letter:text-5xl first-letter:float-left first-letter:mr-3 first-letter:font-black pb-4">{panel.description}</p>
-            <p>
-              This project explores the intersection of {panel.category.toLowerCase()} and narrative storytelling.
-              Designed to push boundaries, every pixel was crafted with intent.
-            </p>
-          </div>
-
-          <div className="flex gap-4">
-            <button
-              className="px-6 py-3 bg-black text-white font-mono text-sm uppercase tracking-wider hover:bg-neutral-800 transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] border-2 border-black"
-            >
-              Open Project
-            </button>
+            {/* Follow-up Link Button (Conditional) */}
+            {panel.link && (
+              <div className="pt-4 border-t-2 border-dashed border-neutral-300 flex flex-wrap items-center justify-between gap-4">
+                <a
+                  href={panel.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-[#FACC15] text-black px-6 py-3.5 font-mono text-sm font-black uppercase tracking-wider border-3 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 transition-all cursor-pointer"
+                >
+                  <span>{panel.linkText || 'Check Out More About The Series'}</span>
+                  <ExternalLink size={18} className="stroke-[2.5]" />
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </motion.div>
@@ -128,7 +210,7 @@ const PanelOverlay: React.FC<{ panel: ComicPanelData; onClose: () => void; color
 };
 
 const ComicPanel: React.FC<{ panel: ComicPanelData; issueColor: any; onClick: () => void; index: number }> = ({ panel, issueColor, onClick, index }) => {
-  const isTextBased = panel.panelType === 'Writing' || panel.panelType === 'Copyediting';
+  const displayImage = (panel.images && panel.images.length > 0) ? panel.images[0] : panel.image;
 
   // Seeded random-ish rotation based on index (-2deg or 2deg)
   const rotateValue = index % 2 === 0 ? -2 : 2;
@@ -165,16 +247,10 @@ const ComicPanel: React.FC<{ panel: ComicPanelData; issueColor: any; onClick: ()
       }}
     >
       <div className="relative w-full h-full aspect-[4/5] md:aspect-square overflow-hidden">
-        {isTextBased ? (
-          <div className="w-full h-full p-6 bg-[#fdfbf7] flex flex-col justify-center items-center text-center relative overflow-hidden">
-            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '10px 10px' }}></div>
-            <h3 className="font-serif text-2xl text-black md:text-3xl mb-2 relative z-10 font-black uppercase">{panel.title}</h3>
-            <p className="font-mono text-xs text-neutral-500 relative z-10 bg-white/80 px-2 py-1">{panel.description}</p>
-          </div>
-        ) : (
+        {displayImage ? (
           <>
             <img
-              src={panel.image}
+              src={displayImage}
               alt={panel.title}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
             />
@@ -194,6 +270,12 @@ const ComicPanel: React.FC<{ panel: ComicPanelData; issueColor: any; onClick: ()
               </h3>
             </div>
           </>
+        ) : (
+          <div className="w-full h-full p-6 bg-[#fdfbf7] flex flex-col justify-center items-center text-center relative overflow-hidden">
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '10px 10px' }}></div>
+            <h3 className="font-serif text-2xl text-black md:text-3xl mb-2 relative z-10 font-black uppercase">{panel.title}</h3>
+            <p className="font-mono text-xs text-neutral-500 relative z-10 bg-white/80 px-2 py-1">{panel.description}</p>
+          </div>
         )}
 
         {/* Comic "Burst" Effect placeholder (border or corner accent) */}
@@ -300,8 +382,8 @@ const Projects: React.FC = () => {
     }
   };
 
-  const handlePanelClick = () => {
-    navigate('/under-construction');
+  const handlePanelClick = (panel: ComicPanelData) => {
+    setSelectedPanel(panel);
   };
 
 
@@ -404,8 +486,8 @@ const Projects: React.FC = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
                 {issue.panels.map((panel, idx) => (
-                  <div key={panel.id} onClick={handlePanelClick} className="aspect-[4/5]">
-                    <ComicPanel panel={panel} issueColor={issue.color} onClick={handlePanelClick} index={idx} />
+                  <div key={panel.id} onClick={() => handlePanelClick(panel)} className="aspect-[4/5]">
+                    <ComicPanel panel={panel} issueColor={issue.color} onClick={() => handlePanelClick(panel)} index={idx} />
                   </div>
                 ))}
               </div>

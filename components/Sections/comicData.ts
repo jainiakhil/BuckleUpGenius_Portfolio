@@ -6,6 +6,9 @@ export interface ComicPanelData extends Project {
     panelType: PanelType;
     issueId: string;
     gridArea?: string; // For custom grid layouts if needed
+    images?: string[]; // Array of image URLs for carousel modal
+    link?: string; // Follow-up link URL
+    linkText?: string; // Follow-up button label
 }
 
 export interface ComicIssue {
@@ -29,7 +32,8 @@ export interface ComicIssue {
  *  1. To Add a New Issue: Copy an entire object in the COMIC_ISSUES array (from { to }).
  *  2. To Add a Project: Add a new object to the 'panels' array within an Issue.
  *  3. Panel Types: 'Photography' | 'Graphic Design' | 'Writing' | 'Copyediting' | 'Subtitle' | 'Web Design'
- *  4. Images: Use local paths (e.g., '/assets/projects/img1.jpg') or external URLs.
+ *  4. Images: Provide an array of image URLs in `images: ['/url1.jpg', '/url2.jpg']`.
+ *  5. Follow-up Link: Provide `link: 'https://...'` and optional `linkText: 'Explore Series'`.
  */
 
 export const COMIC_ISSUES: ComicIssue[] = [
@@ -46,43 +50,88 @@ export const COMIC_ISSUES: ComicIssue[] = [
         panels: [
             {
                 id: 'p1',
-                title: 'Neon Silence',
-                category: 'Photography',
-                panelType: 'Photography',
-                image: 'https://picsum.photos/id/237/800/1000',
-                description: 'A study of urban solitude in Tokyo.',
-                year: '2023',
+                title: 'My India',
+                category: 'Graphic Design',
+                panelType: 'Graphic Design',
+                image: '/files/Projects/p1_1.jpg',
+                images: [
+                    '/files/Projects/p1_1.jpg',
+                    '/files/Projects/p1_2.jpg',
+                    '/files/Projects/p1_3.jpg',
+                    '/files/Projects/p1_4.jpg',
+                    '/files/Projects/p1_5.jpg',
+                    '/files/Projects/p1_6.jpg',
+                    '/files/Projects/p1_7.jpg',
+                    '/files/Projects/p1_8.jpg',
+                    '/files/Projects/p1_9.jpg',
+                    '/files/Projects/p1_10.jpg',
+                    '/files/Projects/p1_11.jpg'
+                ],
+                description: 'Advertising content for the book, "My India" by Olivera Jankovska',
+                year: '2020',
                 issueId: 'issue-1',
+                link: 'https://www.amazon.com/stores/Olivera-Jankovska/author/B08MBGQRH2',
+                linkText: 'Check Out This Book!'
             },
             {
                 id: 'p2',
-                title: 'Echoes of Ink',
-                category: 'Brand Design',
+                title: 'Astronomy on Tap: Koln',
+                category: 'Logo Design',
                 panelType: 'Graphic Design',
-                image: 'https://picsum.photos/id/24/800/1000',
-                description: 'Rebranding for a heritage calligraphy studio.',
-                year: '2024',
+                image: '/files/Projects/p2_1.jpg',
+                images: [
+                    '/files/Projects/p2_1.jpg'
+                ],
+                description: 'New logo design for the Astronomy on Tap: Koln chapter',
+                year: '2020',
                 issueId: 'issue-1',
+                link: 'https://www.facebook.com/share/18Ec6duQiX/',
+                linkText: 'Check Out Their FB Page!'
             },
             {
                 id: 'p3',
-                title: 'Urban Geometry',
-                category: 'Photography',
-                panelType: 'Photography',
-                image: 'https://picsum.photos/id/48/800/800',
-                description: 'Exploring lines and shadows in modern architecture.',
-                year: '2023',
+                title: 'PlasticTree',
+                category: 'Brand Design',
+                panelType: 'Graphic Design',
+                image: '/files/Projects/p3_1.png',
+                images: [
+                    '/files/Projects/p3_1.png',
+                    '/files/Projects/p3_2.jpg',
+                    '/files/Projects/p3_3.jpg',
+                    '/files/Projects/p3_4.jpg',
+                    '/files/Projects/p3_5.jpg',
+                    '/files/Projects/p3_6.png',
+                    '/files/Projects/p3_7.png'
+                ],
+                description: 'Brand images and publicity materials for Plastic Tree, a climate positive waste management company based in Washington, D.C.',
+                year: '2021',
                 issueId: 'issue-1',
+                link: 'https://www.linkedin.com/company/plastictreellc/about/',
+                linkText: 'Check Out The Company!'
             },
             {
                 id: 'p4',
                 title: 'Vivid Dreams',
-                category: 'Graphic Design',
-                panelType: 'Graphic Design',
-                image: 'https://picsum.photos/id/55/800/800',
-                description: 'Surrealist digital art series.',
+                category: 'Photography',
+                panelType: 'Photography',
+                image: '/files/Projects/p4_1.jpeg',
+                images: [
+                    '/files/Projects/p4_1.jpeg',
+                    '/files/Projects/p4_2.jpg',
+                    '/files/Projects/p4_3.jpg',
+                    '/files/Projects/p4_4.jpg',
+                    '/files/Projects/p4_5.jpg',
+                    '/files/Projects/p4_6.jpg',
+                    '/files/Projects/p4_7.jpg',
+                    '/files/Projects/p4_8.jpg',
+                    '/files/Projects/p4_9.jpg',
+                    '/files/Projects/p4_10.jpeg'
+                ],
+                description: 'A few good photos from my daily life',
                 year: '2024',
                 issueId: 'issue-1',
+                link: 'https://www.instagram.com/jainiakhil',
+                linkText: 'Check Out My Insta!'
             },
         ],
     },
@@ -99,33 +148,37 @@ export const COMIC_ISSUES: ComicIssue[] = [
         panels: [
             {
                 id: 'w1',
-                title: 'The Silent Echo',
+                title: 'Flames Within',
                 category: 'Creative Writing',
                 panelType: 'Writing',
-                image: 'https://picsum.photos/id/10/800/800', // Placeholder
-                description: 'A short story about memory and loss.',
-                year: '2023',
+                image: '/files/Projects/w1_1.jpg',
+                description: 'A short story about love and loss.',
+                year: '2016',
                 issueId: 'issue-2',
             },
             {
                 id: 'w2',
-                title: 'Tech Weekly',
-                category: 'Copyediting',
-                panelType: 'Copyediting',
-                image: 'https://picsum.photos/id/20/800/800',
-                description: 'Editorial oversight for a leading tech blog.',
-                year: '2024',
+                title: 'LIYSF',
+                category: 'Article Writing',
+                panelType: 'Writing',
+                image: '/files/Projects/w2_1.jpg',
+                description: 'Ghost writing articles for the London International Youth Science Forum on behalf of GIT Infosys',
+                year: '2021',
                 issueId: 'issue-2',
+                link: 'https://www.liysf.org.uk/blog',
+                linkText: 'Check Out Their Blog!'
             },
             {
                 id: 'w3',
-                title: 'Foreign Cinema',
+                title: 'T.H.E. Podcast',
                 category: 'Subtitling',
                 panelType: 'Subtitle',
-                image: 'https://picsum.photos/id/30/800/600',
-                description: 'Subtitling for indie french films.',
-                year: '2024',
+                image: '/files/Projects/w3_1.jpeg',
+                description: 'Subtitles for The How-To Entrepreneur hosted by Dylan Menter',
+                year: '2021',
                 issueId: 'issue-2',
+                link: 'https://open.spotify.com/show/761I1Mivx4PpjOiBpst5ZU',
+                linkText: 'Listen To The Podast!'
             },
         ],
     },
@@ -142,24 +195,26 @@ export const COMIC_ISSUES: ComicIssue[] = [
         panels: [
             {
                 id: 'dev1',
-                title: 'Minimalist Future',
+                title: 'Personal Portfolio',
                 category: 'Web Design',
                 panelType: 'Web Design',
-                image: 'https://picsum.photos/id/4/800/800',
-                description: 'E-commerce platform for digital artists.',
-                year: '2024',
+                image: '/files/Projects/dev1_1.png',
+                description: 'Portfolio of my personal achievements',
+                year: '2026',
                 issueId: 'issue-3',
+                link: 'https://www.jainiakhil.github.io',
+                linkText: 'Check Out My Website!'
             },
-            {
-                id: 'dev2',
-                title: 'DevDash',
-                category: 'Web Design',
-                panelType: 'Web Design',
-                image: 'https://picsum.photos/id/60/800/800',
-                description: 'Dashboard UI kit for developers.',
-                year: '2023',
-                issueId: 'issue-3',
-            },
+            // {
+            //     id: 'dev2',
+            //     title: 'DevDash',
+            //     category: 'Web Design',
+            //     panelType: 'Web Design',
+            //     image: 'https://picsum.photos/id/60/800/800',
+            //     description: 'Dashboard UI kit for developers.',
+            //     year: '2023',
+            //     issueId: 'issue-3',
+            // },
         ],
     },
 ];
