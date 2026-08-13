@@ -6,7 +6,6 @@
   **A High-Octane, Comic-Book Styled Digital Experience & Creative Showcase**
 
   [![Live Demo](https://img.shields.io/badge/Live%20Demo-buckleupgenius.pages.dev-FF3366?style=for-the-badge&logo=cloudflare&logoColor=white)](https://buckleupgenius.pages.dev/)
-  [![GitHub Repo](https://img.shields.io/badge/GitHub-BuckleUpGenius__Portfolio-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/jainiakhil/BuckleUpGenius_Portfolio)
 
   <br />
 
