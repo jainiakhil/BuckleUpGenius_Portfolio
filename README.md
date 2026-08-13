@@ -24,21 +24,6 @@
 
 Welcome to the **BuckleUpGenius Portfolio** — a freelance portfolio website that turns traditional web showcases into an immersive, comic-book superhero visual narrative. Built using **Antigravity**, React 18, TypeScript, Tailwind CSS 4, and Framer Motion, this site blends bold pop-art graphics, tactile interactions, and smooth animations.
 
-> 🌐 **Live Website**: [https://buckleupgenius.pages.dev/](https://buckleupgenius.pages.dev/)  
-> 🐙 **GitHub Repository**: [https://github.com/jainiakhil/BuckleUpGenius_Portfolio](https://github.com/jainiakhil/BuckleUpGenius_Portfolio)
-
----
-
-## 📸 Screenshots & Showcase
-
-<div align="center">
-  <img src="public/assets/ComicFinal1.png" alt="BuckleUpGenius Comic View Showcase" width="100%" />
-  <p><i>Comic-Book Flip Mode — Interactive Page Turner & Comic Layouts</i></p>
-  <br />
-  <img src="public/assets/OriginalFinal2.png" alt="BuckleUpGenius Portfolio Preview" width="100%" />
-  <p><i>Hero Section & Grid Portfolio View</i></p>
-</div>
-
 ---
 
 ## ✨ Key Features
