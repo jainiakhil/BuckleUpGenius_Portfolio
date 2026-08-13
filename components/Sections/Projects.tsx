@@ -468,7 +468,10 @@ const Projects: React.FC = () => {
                             components/Sections/comicData.ts
                          */}
 
-            <button className="px-8 py-4 bg-accent-red text-white font-bold uppercase tracking-widest hover:bg-red-600 transition-all rounded-sm shadow-[4px_4px_0px_0px_#ffffff] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]">
+            <button
+              onClick={() => navigate('/under-construction')}
+              className="px-8 py-4 bg-accent-red text-white font-bold uppercase tracking-widest hover:bg-red-600 transition-all rounded-sm shadow-[4px_4px_0px_0px_#ffffff] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] cursor-pointer"
+            >
               View Full Archive
             </button>
           </div>
