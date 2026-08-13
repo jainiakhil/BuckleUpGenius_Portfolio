@@ -1,79 +1,159 @@
 <div align="center">
-  <img src="assets/logoFinalWhite.png" alt="BuckleUpGenius Logo" width="800" height="auto" />
-  <h1>BuckleUpGenius Portfolio</h1>
-  <p><strong>A High-Octane, Comic-Book Styled Digital Experience</strong></p>
+  <img src="public/assets/logoFinalWhite.png" alt="BuckleUpGenius Logo" width="600" />
+
+  # 💥 BuckleUpGenius Portfolio
+  
+  **A High-Octane, Comic-Book Styled Digital Experience & Creative Showcase**
+
+  [![Live Demo](https://img.shields.io/badge/Live%20Demo-buckleupgenius.pages.dev-FF3366?style=for-the-badge&logo=cloudflare&logoColor=white)](https://buckleupgenius.pages.dev/)
+  [![GitHub Repo](https://img.shields.io/badge/GitHub-BuckleUpGenius__Portfolio-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/jainiakhil/BuckleUpGenius_Portfolio)
+
+  <br />
+
+  [![React](https://img.shields.io/badge/React-18.3-61DAFB?style=flat-square&logo=react&logoColor=black)](https://reactjs.org/)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+  [![Vite](https://img.shields.io/badge/Vite-6.2-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
+  [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+  [![Framer Motion](https://img.shields.io/badge/Framer_Motion-10.16-0055FF?style=flat-square&logo=framer&logoColor=white)](https://www.framer.com/motion/)
+  [![Cloudflare Pages](https://img.shields.io/badge/Cloudflare_Pages-Deployed-F38020?style=flat-square&logo=cloudflare&logoColor=white)](https://buckleupgenius.pages.dev/)
+
 </div>
 
 ---
 
 ## 🦸‍♂️ Overview
 
-Welcome to the **BuckleUpGenius Portfolio**. This isn't just a portfolio; it's a visual narrative. Designed with a distinct "Comic Book / Superhero" aesthetic, this website combines bold visuals, interactive storytelling, and high-performance immersive animations to showcase creative work.
+Welcome to the **BuckleUpGenius Portfolio** — a freelance portfolio website that turns traditional web showcases into an immersive, comic-book superhero visual narrative. Built using **Antigravity**, React 18, TypeScript, Tailwind CSS 4, and Framer Motion, this site blends bold pop-art graphics, tactile interactions, and smooth animations.
 
-Built with modern web technologies, it features dynamic page transitions, custom cursors, and a unique "Issue" based project viewer that mimics the tactile feel of reading a comic.
+> 🌐 **Live Website**: [https://buckleupgenius.pages.dev/](https://buckleupgenius.pages.dev/)  
+> 🐙 **GitHub Repository**: [https://github.com/jainiakhil/BuckleUpGenius_Portfolio](https://github.com/jainiakhil/BuckleUpGenius_Portfolio)
+
+---
+
+## 📸 Screenshots & Showcase
+
+<div align="center">
+  <img src="public/assets/ComicFinal1.png" alt="BuckleUpGenius Comic View Showcase" width="100%" />
+  <p><i>Comic-Book Flip Mode — Interactive Page Turner & Comic Layouts</i></p>
+  <br />
+  <img src="public/assets/OriginalFinal2.png" alt="BuckleUpGenius Portfolio Preview" width="100%" />
+  <p><i>Hero Section & Grid Portfolio View</i></p>
+</div>
+
+---
 
 ## ✨ Key Features
 
--   **🎨 Comic Book Aesthetic**: Heavy use of Ben-Day dots, bold black outlines, vibrant primary colors, and skewed layouts.
--   **🖱️ Custom Interactive Cursor**: A Lottie-based animated cursor with a trailing ink splatter effect that reacts to user interaction.
--   **📱 Fully Responsive**: Optimized for all devices, with specific mobile-first layouts and touch interactions (including swipe gestures).
--   **🔄 Dynamic Project Viewer**:
-    -   **Flip Mode**: A horizontal scrolling experience mimicking comic pages.
-    -   **Grid Mode**: A classic overview of all works.
--   **🎭 Immersive Animations**: Powered by **Framer Motion** for smooth entrances, scroll-triggered reveals, and spring physics.
--   **🚧 Custom Status Pages**: Dedicated "Under Construction" and "404 Not Found" pages with immersive video loops.
+- **🎨 Superhero / Comic-Book Design Language**:
+  - Halftone Ben-Day dot background patterns, bold black outlines, ink splatters, and comic action bursts (POW!, BAM!, BOOM!).
+  - Dark mode aesthetic (`#0a0a0c` ink black) paired with vibrant halogen accents.
 
-## 🛠️ Tech Stack
+- **📖 Dual Project Viewing Modes**:
+  - **Comic Flip Mode**: A horizontal scrolling page-flip experience mimicking tactile comic issue reading.
+  - **Grid Mode**: A classic grid layout for quick overview of all projects.
 
--   **Framework**: [React](https://reactjs.org/) (v18)
--   **Build Tool**: [Vite](https://vitejs.dev/)
--   **Styling**: [Tailwind CSS](https://tailwindcss.com/) (v4)
--   **Animations**: 
-    -   [Framer Motion](https://www.framer.com/motion/) (Layout & Interactions)
-    -   [Lottie React](https://lottiereact.com/) (Vector Animations)
--   **Routing**: [React Router DOM](https://reactrouter.com/)
--   **Icons**: [Lucide React](https://lucide.dev/)
+- **🖱️ Interactive Custom Cursor**:
+  - Dynamic Lottie-powered cursor with an animated ink trail effect reacting to user pointer movements and interactive hover states.
 
-## � Getting Started
+- **⚡ Spring Physics & Fluid Motion**:
+  - Animated with **Framer Motion** for smooth section entrances, scroll-triggered reveals, and micro-interactions.
 
-Follow these steps to run the project locally:
+- **🎬 Video-Infused Status Pages**:
+  - Dedicated **404 Not Found** and **Under Construction** pages featuring seamless video loop elements and comic branding.
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/your-username/BuckleUpGenius-Portfolio.git
-    cd BuckleUpGenius-Portfolio
-    ```
+- **📱 Fully Responsive**:
+  - Seamlessly adapts across mobile, tablet, and desktop screens with swipe gesture support for touch devices.
 
-2.  **Install technical superpowers (dependencies):**
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
+---
 
-3.  **Launch the signal (Dev Server):**
-    ```bash
-    npm run dev
-    ```
+## 🛠️ Tech Stack & Dependencies
 
-4.  **Open the portal:**
-    open `http://localhost:5173` in your browser.
+| Category | Technology | Description |
+| :--- | :--- | :--- |
+| **Framework** | [React 18](https://react.dev/) | Frontend component library with TypeScript |
+| **Build Tool** | [Vite 6](https://vitejs.dev/) | Lightning-fast HMR and bundle builder |
+| **Styling** | [Tailwind CSS 4](https://tailwindcss.com/) | Utility-first CSS styling framework |
+| **Animations** | [Framer Motion](https://www.framer.com/motion/) | Complex gesture animations & page transitions |
+| **Vector Motion** | [Lottie React](https://lottiereact.com/) | Interactive cursor & UI vector animations |
+| **Routing** | [React Router DOM v7](https://reactrouter.com/) | Client-side page navigation |
+| **Icons** | [Lucide React](https://lucide.dev/) | Clean, accessible SVG icon set |
+| **Hosting** | [Cloudflare Pages](https://pages.cloudflare.com/) | Global edge-network deployment |
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to run the portfolio locally on your machine:
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18.0.0 or higher recommended)
+- `npm` or `yarn`
+
+### Installation & Run
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/jainiakhil/BuckleUpGenius_Portfolio.git
+   cd BuckleUpGenius_Portfolio
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in Browser**:
+   Navigate to `http://localhost:3000` (or the local URL printed in your terminal).
+
+5. **Build for Production**:
+   ```bash
+   npm run build
+   ```
+
+---
 
 ## 📁 Project Structure
 
 ```
-src/
-├── assets/          # Images, Videos, Lottie JSONs
-├── components/
-│   ├── Layout/      # Navigation, Footer
-│   ├── Pages/       # Full page routes (404, Under Construction)
-│   ├── Sections/    # Homepage sections (Hero, About, Projects...)
-│   └── UI/          # Reusable atoms (CustomCursor, Buttons...)
-└── ...
+BuckleUpGenius_Portfolio/
+├── components/             # React Components
+│   ├── Layout/             # Navigation & Structure
+│   ├── Pages/              # 404 & Under Construction Pages
+│   ├── Sections/           # Hero, About, Projects, Testimonials, Contact
+│   └── UI/                 # CustomCursor, NoiseOverlay, Badges
+├── public/                 # Static Assets
+│   └── assets/             # Logos, Screenshots, & Video loops (.mp4)
+├── App.tsx                 # Core Application & Router setup
+├── constants.ts            # Portfolio Data (Projects, Services, Testimonials)
+├── types.ts                # TypeScript Interfaces
+├── vite.config.ts          # Vite Configuration
+└── package.json            # Dependencies & Scripts
 ```
 
 ---
 
+## 🌐 Live Deployment
+
+The site is continuously deployed via **Cloudflare Pages**.
+
+- 🔗 **Production URL**: [https://buckleupgenius.pages.dev/](https://buckleupgenius.pages.dev/)
+
+---
+
+## 👤 Author
+
+**BuckleUpGenius** (Akhil Jaini)
+- GitHub: [@jainiakhil](https://github.com/jainiakhil)
+- Website: [buckleupgenius.pages.dev](https://buckleupgenius.pages.dev/)
+
+---
+
 <div align="center">
-  <p><i>Crafted with 💥 by BuckleUpGenius</i></p>
+  <p><i>Crafted with 💥 by BuckleUpGenius using Antigravity</i></p>
 </div>
